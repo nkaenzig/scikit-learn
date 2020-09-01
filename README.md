@@ -13,6 +13,16 @@ np.mean(cross_val_score(model, x_train, y_train, cv=3, verbose=True, scoring='ro
 
 ### Cross-Validation with Grid-Search
 ```python
+from sklearn.model_selection import GridSearchCV
+parameters = {'kernel': ('linear', 'rbf'), 'C':[1, 10]}
+svc = svm.SVC()
+clf = GridSearchCV(svc, parameters)
+clf.fit(x, y)
+
+predictions = clf.predict(x_test)
+```
+
+```python
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import Pipeline
